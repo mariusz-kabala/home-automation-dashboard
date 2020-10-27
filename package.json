@@ -1,0 +1,28 @@
+{
+  "name": "homeautomationdashboard",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^16.9.53",
+    "lerna": "^3.22.1",
+    "ts-loader": "^8.0.7",
+    "typescript": "^4.0.3"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%"
+  ],
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "redux-thunk": "^2.3.0"
+  }
+}
