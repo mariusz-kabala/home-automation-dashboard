@@ -59,20 +59,6 @@ module.exports = function ({ deps, entry, port, name, filename, appName }) {
             },
           ],
         },
-        {
-          test: /\.s(a|c)ss$/,
-          exclude: /\.module.(s(a|c)ss)$/,
-          use: [
-            isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
-            "css-loader",
-            {
-              loader: "sass-loader",
-              options: {
-                sourceMap: isDevelopment,
-              },
-            },
-          ],
-        },
       ],
     },
 
