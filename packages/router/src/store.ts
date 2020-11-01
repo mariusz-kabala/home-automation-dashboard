@@ -1,4 +1,5 @@
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
+import { reducer } from './state/reducer'
 import thunk from 'redux-thunk'
 
 declare global {
@@ -7,19 +8,8 @@ declare global {
     }
 }
 
-const initialState = {
-  appName: 'host',
-};
-
-const hostReducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
 const staticReducers = {
-  host: hostReducer,
+  host: reducer,
 };
 
 /**

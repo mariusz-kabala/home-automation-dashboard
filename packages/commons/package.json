@@ -1,0 +1,9 @@
+{
+  "name": "@home/commons",
+  "version": "0.0.0",
+  "license": "ISC",
+  "source": "./src/index.ts",
+  "module": "./src/index.ts",
+  "main": "./src/index.ts",
+  "scripts": {}
+}
