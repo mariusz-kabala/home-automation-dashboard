@@ -78,28 +78,32 @@ export const App: FC<{}> = () => {
   return (
     <Router>
       <div className={styles.wrapper}>
-        <HeaderApp />
-        <Switch>
-          <Route path="/lights">
-            <Suspense fallback="Loading...">
-              <LightsApp store={store} />
-            </Suspense>
-          </Route>
-          <Route path="/logs">
-            <Suspense fallback="Loading...">
-              <LoggerApp store={store} />
-            </Suspense>
-          </Route>
-          <Route path="/sensors">
-            <Sensors />
-          </Route>
-          <Route path="/appliances">
-            <Appliances />
-          </Route>
-          <Route path="/">
-            <Dashboard />
-          </Route>
-        </Switch>
+        <Suspense fallback="Loading...">
+          <HeaderApp store={store} />
+        </Suspense>
+        <div className={styles.content}>
+          <Switch>
+            <Route path="/lights">
+              <Suspense fallback="Loading...">
+                <LightsApp store={store} />
+              </Suspense>
+            </Route>
+            <Route path="/logs">
+              <Suspense fallback="Loading...">
+                <LoggerApp store={store} />
+              </Suspense>
+            </Route>
+            <Route path="/sensors">
+              <Sensors />
+            </Route>
+            <Route path="/appliances">
+              <Appliances />
+            </Route>
+            <Route path="/">
+              <Dashboard />
+            </Route>
+          </Switch>
+        </div>
         <Menu />
       </div>
     </Router>

@@ -5,7 +5,7 @@ import {
   FETCH_DECONZ_LIGHTS,
   UPDATE_DECONZ_LIGHTS,
   FETCH_DECONZ_LIGHTS_ERROR,
-  UPDATE_DECONZ_GROUP_STATE
+  UPDATE_DECONZ_GROUP_STATE,
 } from "./actions";
 
 export interface ILightState {
@@ -17,9 +17,15 @@ export interface ILightState {
   sat: number;
 }
 
+export interface IRoom {
+  name: string;
+  groups: string[];
+}
+
 export interface IState {
   isLoading: boolean;
   isError: boolean;
+  rooms: IRoom[];
   groups: {
     [id: string]: {
       name: string;
@@ -39,29 +45,50 @@ export interface IState {
   };
 }
 
-const MODELS_TO_SKIP = ['RaspBee'] // list of lights to not use (fake ones)
+const MODELS_TO_SKIP = ["RaspBee"]; // list of lights to not use (fake ones)
 
 const initialState: IState = {
+  rooms: [
+    {
+      name: "Living room",
+      groups: ["7"],
+    },
+    {
+      name: "Kitchen",
+      groups: ["7619"],
+    },
+    {
+      name: "Bedroom",
+      groups: ["11"],
+    },
+    {
+      name: "Corridor",
+      groups: ["9", "10"],
+    },
+  ],
   isLoading: false,
   isError: false,
   groups: {},
   lights: {},
 };
 
-const updateDeCONTZLights = (_state: IState, action: IUpdateDeCONZLightsInfoAction): IState => {
-  const { payload } = action
-  const groups = {}
-  const lights = {}
+const updateDeCONTZLights = (
+  state: IState,
+  action: IUpdateDeCONZLightsInfoAction
+): IState => {
+  const { payload } = action;
+  const groups = {};
+  const lights = {};
 
   // groups
   for (const groupId of Object.keys(payload.groups)) {
-    const currentGroup = payload.groups[groupId]
-    
+    const currentGroup = payload.groups[groupId];
+
     // do not consider groups without bulbs
     if (currentGroup.lights.length === 0) {
-      continue
+      continue;
     }
-    
+
     groups[groupId] = {
       name: currentGroup.name,
       lights: currentGroup.lights,
@@ -72,16 +99,16 @@ const updateDeCONTZLights = (_state: IState, action: IUpdateDeCONZLightsInfoActi
         ct: currentGroup.action.ct,
         on: currentGroup.action.on,
         sat: currentGroup.action.sat,
-      }
-    }
+      },
+    };
   }
 
   // lights
   for (const lightId of Object.keys(payload.lights)) {
-    const currentLight = payload.lights[lightId]
+    const currentLight = payload.lights[lightId];
 
     if (MODELS_TO_SKIP.includes(currentLight.modelid)) {
-      continue
+      continue;
     }
 
     lights[lightId] = {
@@ -97,20 +124,24 @@ const updateDeCONTZLights = (_state: IState, action: IUpdateDeCONZLightsInfoActi
         ct: currentLight.state.ct,
         on: currentLight.state.on,
         sat: currentLight.state.sat,
-      }
-    }
+      },
+    };
   }
 
   return {
+    ...state,
     isLoading: false,
     isError: false,
     groups,
     lights,
-  }
-}
+  };
+};
 
-const updateDeCONTZGroupState = (store: IState, action: IUpdateDeCONZGroupStateAction): IState => {
-  const { state, id } = action
+const updateDeCONTZGroupState = (
+  store: IState,
+  action: IUpdateDeCONZGroupStateAction
+): IState => {
+  const { state, id } = action;
 
   return {
     ...store,
@@ -120,12 +151,12 @@ const updateDeCONTZGroupState = (store: IState, action: IUpdateDeCONZGroupStateA
         ...store.groups[id],
         state: {
           ...store.groups[id].state,
-          ...state
-        }
-      }
-    }
-  }
-} 
+          ...state,
+        },
+      },
+    },
+  };
+};
 
 export function reducer(state: IState = initialState, action: IAction): IState {
   switch (action.type) {
@@ -133,21 +164,27 @@ export function reducer(state: IState = initialState, action: IAction): IState {
       return {
         ...initialState,
         isLoading: true,
-        isError: false
-      }
+        isError: false,
+      };
 
     case FETCH_DECONZ_LIGHTS_ERROR:
       return {
         ...initialState,
         isLoading: false,
-        isError: true
-      }
+        isError: true,
+      };
 
     case UPDATE_DECONZ_LIGHTS:
-      return updateDeCONTZLights(state, action as IUpdateDeCONZLightsInfoAction)
+      return updateDeCONTZLights(
+        state,
+        action as IUpdateDeCONZLightsInfoAction
+      );
 
     case UPDATE_DECONZ_GROUP_STATE:
-      return updateDeCONTZGroupState(state, action as IUpdateDeCONZGroupStateAction)
+      return updateDeCONTZGroupState(
+        state,
+        action as IUpdateDeCONZGroupStateAction
+      );
   }
 
   return state;

@@ -17,6 +17,7 @@ module.exports = function ({ deps, entry, port, name, filename, appName }) {
     devServer: {
       contentBase: "./dist",
       hot: true,
+      historyApiFallback: true,
       port,
     },
     output: {
@@ -47,7 +48,9 @@ module.exports = function ({ deps, entry, port, name, filename, appName }) {
             {
               loader: "css-loader",
               options: {
-                modules: true,
+                modules: {
+                  localIdentName: `${appName}_[local]--[hash:base64:5]`,
+                },
                 sourceMap: isDevelopment,
               },
             },
@@ -82,8 +85,8 @@ module.exports = function ({ deps, entry, port, name, filename, appName }) {
         template: "./public/index.html",
       }),
       new MiniCssExtractPlugin({
-        filename: isDevelopment ? "[name].css" : "[name].[hash].css",
-        chunkFilename: isDevelopment ? "[id].css" : "[id].[hash].css",
+        filename: isDevelopment ? `${appName}.[name].css` : `${appName}[name].[hash].css`,
+        chunkFilename: isDevelopment ? `${appName}.[id].css` : `${appName}.[id].[hash].css`,
       }),
     ],
   };
