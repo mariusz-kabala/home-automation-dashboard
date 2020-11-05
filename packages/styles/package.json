@@ -1,0 +1,6 @@
+{
+    "name": "@home/styles",
+    "version": "0.0.0",
+    "private": true,
+    "sass": "./scss/index.scss"
+}

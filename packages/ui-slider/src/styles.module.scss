@@ -1,0 +1,72 @@
+:global {
+    .slider {
+        width: 100%;
+        max-width: 500px;
+        height: 40px;
+    }
+
+    .track {
+        position: relative;
+        
+    }
+
+    .track-0 {
+        background-color: #00ba99;
+        height: 4px;
+        top: 23px;
+    }
+
+    .track-1 {
+        background-color: #bcbdbc;
+        height: 2px;
+        top: 24px;
+    }
+}
+
+.value {
+    color: #fff;
+    padding: 0 4px;
+    min-width: 34px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+    height: 30px;
+    position: absolute;
+    top: -46px;
+    left: 30px;
+    border-bottom: 2px solid #b0b1b0;
+    &:after {
+        content: '';
+        transform: rotate(-40deg);
+        width: 20px;
+        position: absolute;
+        height: 2px;
+        bottom: -8px;
+        left: -17px;
+        background: #b0b1b0;
+    }
+
+    &.right {
+        left: auto;
+        text-align: left;
+        right: 30px;
+        &:after {
+            left: auto;
+            right: -17px;
+            transform: rotate(40deg);
+        }
+    }
+}
+
+.thumb {
+    top: 15px;
+    background-color: #00ba99;
+    position: relative;
+    border: 2px solid black;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    line-height: 38px;
+    cursor: pointer;
+}

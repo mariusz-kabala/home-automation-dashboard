@@ -1,7 +1,10 @@
+@import '~@home/styles/scss/variables';
+
 .wrapper {
     width: 100%;
-    background: #333333;
-    color: #fff;
+    background: $colorBg2;
+    color: $colorWhite;
+    border-top: 1px solid $colorActive;
     ul {
         width: 100%;
         margin: 0;
@@ -14,7 +17,7 @@
         align-items: center;
 
         a {
-            color: #fff;
+            color: $colorWhite;
             text-decoration: none;
         }
 
@@ -24,7 +27,7 @@
             text-align: center;
 
             &.active {
-                background: #01BA9A;
+                background: $colorActive;
             }
 
             b {

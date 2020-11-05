@@ -9,6 +9,7 @@ import { Menu } from "../../components/Menu";
 import { Dashboard } from "../Dashboard";
 import { Sensors } from "../Sensors";
 import { Appliances } from "../Appliances";
+import { createBrowserHistory } from "history";
 
 import styles from "./styles.module.scss";
 

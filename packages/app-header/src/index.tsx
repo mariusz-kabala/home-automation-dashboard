@@ -4,8 +4,6 @@ import { App } from './containers/App'
 import { reducer } from './state/reducer'
 import { APP_NAME } from './constants'
 
-console.log('here?')
-
 const AppWrapper: FC<{store?: any}> = ({store = {}}) => {
   useEffect(() => {
     store.injectReducer(APP_NAME, reducer)

@@ -29,12 +29,14 @@ export const App: FC<{}> = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.timer}>
-        <span className={styles.time}>{time.time}</span>{" "}
-        <span className={styles.seconds}>:{time.seconds}</span>
-        <span className={styles.date}>{time.date}</span>
+        <div className={styles.content}>
+          <span className={styles.time}>{time.time}</span>{" "}
+          <span className={styles.seconds}>:{time.seconds}</span>
+          <span className={styles.date}>{time.date}</span>
+        </div>
       </div>
       <div className={styles.notifications}>
-          notifications go here
+        <div className={styles.content}>notifications go here</div>
       </div>
     </div>
   );

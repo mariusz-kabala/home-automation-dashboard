@@ -19,6 +19,7 @@ export interface ILightState {
 
 export interface IRoom {
   name: string;
+  id: string;
   groups: string[];
 }
 
@@ -52,18 +53,22 @@ const initialState: IState = {
     {
       name: "Living room",
       groups: ["7"],
+      id: 'living-room',
     },
     {
       name: "Kitchen",
       groups: ["7619"],
+      id: 'kitchen',
     },
     {
       name: "Bedroom",
       groups: ["11"],
+      id: 'bedroom',
     },
     {
       name: "Corridor",
       groups: ["9", "10"],
+      id: 'corridor',
     },
   ],
   isLoading: false,

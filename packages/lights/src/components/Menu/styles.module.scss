@@ -1,28 +1,53 @@
+@import "~@home/styles/scss/mixins";
+@import "~@home/styles/scss/variables";
+
 .wrapper {
-    flex-basis: 30%;
-    width: 30%;
-    max-width: 320px;
+  @include leftColumn();
+  .content {
     margin: 0 8px;
-    padding: 16px 12px;
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        
-        li {
-            margin: 0 0 24px 0;
-            padding: 0;
-            display: block;
+    padding: 16px 28px;
 
-            h3 {
-                font-weight: 600;
-                font-size: 22px;
-                margin: 0;
-            }
-
-            p {
-                margin: 4px 0 0 0;
-            }
-        }
+    a {
+      text-decoration: none;
+      color: $colorWhite;     
     }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      li {
+        margin: 0 0 24px 0;
+        padding: 0;
+        display: block;
+        position: relative;
+
+        svg {
+          position: absolute;
+          top: 28%;
+          right: 0;
+          display: none;
+        }
+
+        &.active {
+          color: $colorActive;
+
+          svg {
+            fill: $colorActive;
+            display: block;
+          }
+        }
+
+        h3 {
+          font-weight: 600;
+          font-size: 22px;
+          margin: 0;
+        }
+
+        p {
+          margin: 4px 0 0 0;
+        }
+      }
+    }
+  }
 }
