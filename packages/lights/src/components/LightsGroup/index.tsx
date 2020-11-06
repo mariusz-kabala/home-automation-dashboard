@@ -1,8 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { ILightState } from "../../state/reducer";
+import { GiExpand } from "react-icons/gi";
 import { Light } from "@home/ui-light";
 import { Slider } from "@home/ui-slider";
-import { HuePicker } from "react-color";
+import { HuePicker, AlphaPicker, Slider as SliderColor } from "react-color";
 
 import styles from "./styles.module.scss";
 
@@ -13,6 +14,8 @@ export const LightsGroup: FC<{
   modelid: string;
   manufacturername: string;
 }> = ({ state, id, manufacturername, name, modelid }) => {
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.lightWrapper}>
@@ -26,10 +29,17 @@ export const LightsGroup: FC<{
       </div>
       <div className={styles.hue}>
         {state.hue && <HuePicker />}
+        {isExpanded && state.sat && <AlphaPicker />}
       </div>
       <div className={styles.slider}>
         <Slider value={state.bri} />
       </div>
+      <a
+        className={styles.expandButton}
+        onClick={() => setIsExpanded((state) => !state)}
+      >
+        <GiExpand />
+      </a>
     </div>
   );
 };
