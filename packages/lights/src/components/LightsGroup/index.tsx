@@ -3,9 +3,41 @@ import { ILightState } from "../../state/reducer";
 import { GiExpand } from "react-icons/gi";
 import { Light } from "@home/ui-light";
 import { Slider } from "@home/ui-slider";
-import { HuePicker, AlphaPicker, Slider as SliderColor } from "react-color";
+import { HuePicker, AlphaPicker } from "react-color";
+import { LightTemperatureSlider } from "@home/ui-light-temperature-slider";
 
 import styles from "./styles.module.scss";
+
+const getParams = (state: ILightState) => {
+  const params = [];
+
+  if (state.hue) {
+    params.push({
+      label: "Color",
+      component: <HuePicker />,
+    });
+  }
+
+  if (state.ct) {
+    params.push({
+      label: "Temperature",
+      component: <LightTemperatureSlider value={state.ct} />,
+    });
+  }
+
+  if (state.sat) {
+    params.push({
+      label: "Saturation",
+      component: (
+        <div className={styles.saturation}>
+          <AlphaPicker />
+        </div>
+      ),
+    });
+  }
+
+  return params;
+};
 
 export const LightsGroup: FC<{
   state: ILightState;
@@ -15,6 +47,7 @@ export const LightsGroup: FC<{
   manufacturername: string;
 }> = ({ state, id, manufacturername, name, modelid }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const params = getParams(state);
 
   return (
     <div className={styles.wrapper}>
@@ -28,8 +61,14 @@ export const LightsGroup: FC<{
         </p>
       </div>
       <div className={styles.hue}>
-        {state.hue && <HuePicker />}
-        {isExpanded && state.sat && <AlphaPicker />}
+        {!isExpanded && params[0] && params[0].component}
+        {isExpanded &&
+          params.map((param, index) => (
+            <div key={`param-${index}`}>
+              <label>{param.label}:</label>
+              {param.component}
+            </div>
+          ))}
       </div>
       <div className={styles.slider}>
         <Slider value={state.bri} />

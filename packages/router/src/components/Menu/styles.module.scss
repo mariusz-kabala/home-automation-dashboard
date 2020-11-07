@@ -1,10 +1,14 @@
 @import '~@home/styles/scss/variables';
 
 .wrapper {
+    flex-basis: 87px;
     width: 100%;
     background: $colorBg2;
     color: $colorWhite;
-    border-top: 1px solid $colorActive;
+    border-top: 2px solid $colorActive;
+    box-shadow: 0px -3px 6px -1px #000000;
+    position: relative;
+    z-index: 2;
     ul {
         width: 100%;
         margin: 0;

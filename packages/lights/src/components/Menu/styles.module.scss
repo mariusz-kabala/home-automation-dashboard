@@ -3,6 +3,8 @@
 
 .wrapper {
   @include leftColumn();
+  background-color: #3b3c3b;
+  border-right: 1px solid #494a49;
   .content {
     margin: 0 8px;
     padding: 16px 28px;

@@ -1,12 +1,19 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { useSelector } from "react-redux";
+import cx from 'classnames'
+import { MdExpandMore, MdExpandLess } from "react-icons/md";
+import { GiExpand } from "react-icons/gi";
 import { IRoom } from "../../state/reducer";
 import { APP_NAME } from "../../constants";
 import { LightsGroup } from "../LightsGroup";
+import { Slider } from "@home/ui-slider";
 import { Light } from "@home/ui-light";
 import styles from "./styles.module.scss";
 
+// const getParams = ()
+
 export const Room: FC<IRoom> = ({ id, groups, name }) => {
+  const [areLightsVisible, setAreLightsVisible] = useState<boolean>(false);
   const groupsData = useSelector((state) => {
     const data = state[APP_NAME].groups;
     const result = [];
@@ -30,10 +37,10 @@ export const Room: FC<IRoom> = ({ id, groups, name }) => {
       return all;
     }, {});
 
-    let length = 0
+    let length = 0;
     for (const group of groupsData) {
       for (const lightId of group.lights) {
-        length += 1
+        length += 1;
         lights[group.id].push({
           id: lightId,
           ...state[APP_NAME].lights[lightId],
@@ -43,26 +50,54 @@ export const Room: FC<IRoom> = ({ id, groups, name }) => {
 
     return {
       ...lights,
-      length
+      length,
     };
   });
-
+  console.log(groupsData);
   return (
     <div className={styles.wrapper}>
       <header className={styles.topHeader}>
         <h2>{name}</h2>
-        <p>Total of <strong>{lights.length}</strong> light sources</p>
+        <p>
+          Total of <strong>{lights.length}</strong> light sources
+        </p>
       </header>
       <div className={styles.content}>
         {groupsData.map((group) => (
-          <section key={`group-${group.id}`}>
+          <section key={`group-${group.id}`} className={cx({
+            [styles.expanded]: areLightsVisible
+          })}>
             <header>
-              <Light additionalStyles={styles.light} on={false} />
-              <h3>{group.name}</h3>
+              <div className={styles.lightWrapper}>
+                <Light additionalStyles={styles.light} on={false} />
+              </div>
+              <div className={styles.dsc}>
+                <h3>{group.name}</h3>
+              </div>
+              <div className={styles.hue}></div>
+              <div className={styles.slider}>
+                <Slider value={group.state.bri} />
+              </div>
+              <a className={styles.expandButton} onClick={() => null}>
+                <GiExpand />
+              </a>
             </header>
-            {(lights[group.id] || []).map((light) => (
-              <LightsGroup key={light.id} {...light} />
-            ))}
+            {areLightsVisible &&
+              (lights[group.id] || []).map((light) => (
+                <LightsGroup key={light.id} {...light} />
+              ))}
+
+            <div className={styles.seeAll}>
+              {!areLightsVisible ? (
+                <MdExpandMore
+                  onClick={() => setAreLightsVisible((state) => !state)}
+                />
+              ) : (
+                <MdExpandLess
+                  onClick={() => setAreLightsVisible((state) => !state)}
+                />
+              )}
+            </div>
           </section>
         ))}
       </div>

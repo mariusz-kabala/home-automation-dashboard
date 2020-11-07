@@ -31,6 +31,13 @@
     .hue {
         flex-basis: 29%;
         margin: 0 16px;
+
+        label {
+            display: block;
+            margin: 6px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
     }
 
     .slider {
@@ -57,4 +64,10 @@
 .expandButton {
     margin-left: 16px;
     cursor: pointer;
+}
+
+.saturation {
+    background-color: #fff;
+    width: fit-content;
+    height: fit-content;
 }
