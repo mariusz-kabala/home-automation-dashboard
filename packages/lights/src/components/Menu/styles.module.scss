@@ -11,7 +11,7 @@
 
     a {
       text-decoration: none;
-      color: $colorWhite;     
+      color: $colorWhite;
     }
     ul {
       margin: 0;
@@ -19,24 +19,40 @@
       list-style-type: none;
 
       li {
-        margin: 0 0 24px 0;
+        margin: 0 0 40px 0;
         padding: 0;
         display: block;
         position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
 
-        svg {
-          position: absolute;
-          top: 28%;
-          right: 0;
-          display: none;
+        .icon {
+          svg {
+            width: 1.8em;
+            height: 1.8em;
+            margin-right: 8px;
+          }
+        }
+
+        .more {
+          svg {
+            position: absolute;
+            top: 28%;
+            right: 0;
+            display: none;
+          }
         }
 
         &.active {
           color: $colorActive;
 
-          svg {
-            fill: $colorActive;
-            display: block;
+          .more {
+            svg {
+              fill: $colorActive;
+              display: block;
+            }
           }
         }
 
