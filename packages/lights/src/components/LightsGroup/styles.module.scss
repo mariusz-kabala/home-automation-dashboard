@@ -1,73 +1,100 @@
 @import "~@home/styles/scss/variables";
 
 .wrapper {
-    font-family: Roboto,sans-serif;
-    background: black;
-    color: #fff;
-    padding: 16px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    margin: 4px 0;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  background-color: $colorBg2;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #494a49;
+  box-shadow: 0px -3px 6px -1px #000000;
+  position: relative;
+
+  &.expanded {
+    padding-bottom: 18px;
+
+    .seeAll {
+      svg {
+        bottom: -6px;
+      }
+    }
+
+    header {
+      margin-bottom: 8px;
+    }
+  }
+
+  header {
+    justify-content: flex-start;
+    padding: 0 16px;
 
     h3 {
-        font-weight: 800;
-        font-size: 18px;
-        font-weight: 400;
-        margin: 0;
+      font-size: 14px;
     }
 
     .dsc {
-        margin: 0 0 0 8px;
-        flex-basis: 30%;
+      flex-basis: 30%;
+      margin-left: 8px;
+    }
+
+    .expandButton {
+      margin-left: 16px;
+      margin-right: 4px;
+      cursor: pointer;
     }
 
     .lightWrapper {
-        flex-basis: 80px;
+      flex-basis: 80px;
     }
 
     .hue {
-        flex-basis: 29%;
-        margin: 0 16px;
+      flex-basis: 29%;
+      margin: 0 16px;
 
-        label {
-            display: block;
-            margin: 6px 0;
-            font-size: 14px;
-            font-weight: 600;
-        }
+      label {
+        display: block;
+        margin: 6px 0;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
     }
 
     .slider {
-        flex-basis: 29%;
+      flex-basis: 29%;
     }
-
-    p {
-        font-size: 13px;
-        font-weight: bold;
-        margin: 4px 0 0 0;
-        padding: 0;
-        color: $colorBg;
-    }
+  }
 }
 
 .light {
-    svg {
-        height: 2.2em;
-        width: 1.2em;
-        margin-top: 4px;
-    }
+  margin-left: 6px;
+  border: 4px solid $colorBg;
+  svg {
+    margin-top: 4px;
+    fill: $colorBg;
+    width: 2em;
+    height: 2em;
+  }
 }
 
-.expandButton {
-    margin-left: 16px;
+.seeAll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  svg {
     cursor: pointer;
+    position: absolute;
+    bottom: 2px;
+    width: 2em;
+    height: 2em;
+  }
 }
 
 .saturation {
-    background-color: #fff;
-    width: fit-content;
-    height: fit-content;
+  background-color: #fff;
+  width: fit-content;
+  height: fit-content;
 }

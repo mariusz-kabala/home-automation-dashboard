@@ -10,11 +10,7 @@ export const LightTemperatureSlider: FC<{ value: number }> = ({ value }) => {
         min={153}
         max={500}
         renderTrack={(props, state) => (
-          <div
-            {...props}
-            index={state.index}
-            className={undefined}
-          />
+          <div {...props} index={state.index} className={undefined} />
         )}
         renderThumb={(props, state) => (
           <div {...props} className={styles.thumb}>
@@ -22,9 +18,7 @@ export const LightTemperatureSlider: FC<{ value: number }> = ({ value }) => {
               className={cx(styles.value, {
                 [styles.right]: state.valueNow >= 80,
               })}
-            >
-              {state.valueNow}%
-            </div>
+            />
           </div>
         )}
         defaultValue={value}

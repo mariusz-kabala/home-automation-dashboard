@@ -7,42 +7,19 @@ import {
   FETCH_DECONZ_LIGHTS_ERROR,
   UPDATE_DECONZ_GROUP_STATE,
 } from "./actions";
-
-export interface ILightState {
-  bri: number;
-  colormode?: string;
-  hue?: number;
-  ct?: number;
-  on: boolean;
-  sat: number;
-}
-
-export interface IRoom {
-  name: string;
-  id: string;
-  groups: string[];
-}
+import { ILight } from '../types/light'
+import { IRoom } from '../types/room'
+import { IGroup } from '../types/group'
 
 export interface IState {
   isLoading: boolean;
   isError: boolean;
   rooms: IRoom[];
   groups: {
-    [id: string]: {
-      name: string;
-      state: ILightState;
-      lights: string[];
-    };
+    [id: string]: IGroup
   };
   lights: {
-    [id: string]: {
-      name: string;
-      manufacturername: string;
-      modelid: string;
-      lastannounced: string;
-      lastseen: string;
-      state: ILightState;
-    };
+    [id: string]: ILight;
   };
 }
 

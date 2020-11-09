@@ -1,0 +1,73 @@
+@import "~@home/styles/scss/variables";
+
+.wrapper {
+    font-family: Roboto,sans-serif;
+    background: black;
+    color: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    margin: 4px 0;
+    justify-content: space-evenly;
+    align-items: center;
+
+    h3 {
+        font-weight: 800;
+        font-size: 18px;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .dsc {
+        margin: 0 0 0 8px;
+        flex-basis: 30%;
+    }
+
+    .lightWrapper {
+        flex-basis: 80px;
+    }
+
+    .hue {
+        flex-basis: 29%;
+        margin: 0 16px;
+
+        label {
+            display: block;
+            margin: 6px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+
+    .slider {
+        flex-basis: 29%;
+    }
+
+    p {
+        font-size: 13px;
+        font-weight: bold;
+        margin: 4px 0 0 0;
+        padding: 0;
+        color: $colorBg;
+    }
+}
+
+.light {
+    svg {
+        height: 2.2em;
+        width: 1.2em;
+        margin-top: 4px;
+    }
+}
+
+.expandButton {
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+.saturation {
+    background-color: #fff;
+    width: fit-content;
+    height: fit-content;
+}
