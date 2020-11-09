@@ -1,0 +1,10 @@
+@import "~@home/styles/scss/variables";
+
+.wrapper {
+  background: $colorContent;
+  padding: 40px;
+  min-width: 200px;
+  margin: 5% 7% 2% 2%;
+  border-radius: 5px;
+  box-shadow: 0px 6px 6px -1px #000000;
+}

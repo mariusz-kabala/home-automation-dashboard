@@ -14,12 +14,6 @@
   &.expanded {
     padding-bottom: 18px;
 
-    .seeAll {
-      svg {
-        bottom: -6px;
-      }
-    }
-
     header {
       margin-bottom: 8px;
     }
@@ -40,7 +34,6 @@
 
     .expandButton {
       margin-left: 16px;
-      margin-right: 4px;
       cursor: pointer;
     }
 
@@ -51,6 +44,7 @@
     .hue {
       flex-basis: 29%;
       margin: 0 16px;
+      padding-bottom: 8px;
 
       label {
         display: block;
@@ -85,9 +79,12 @@
   flex-direction: column;
 
   svg {
+    border-radius: 50%;
+    box-shadow: 0px 0px 16px 0px rgba(50, 50, 50, 0.78);
+    background-color: #3b3c3b;
     cursor: pointer;
     position: absolute;
-    bottom: 2px;
+    bottom: -10px;
     width: 2em;
     height: 2em;
   }

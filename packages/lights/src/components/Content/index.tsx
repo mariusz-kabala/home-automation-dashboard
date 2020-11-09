@@ -3,7 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Room } from "../Room";
 import { LightsGroupWidget } from "../LightsGroupWidget";
-import styles from './styles.module.scss'
+import { LightLevelWidget } from '../LightLevelWidget';
+import styles from "./styles.module.scss";
 
 export const Content: FC<{}> = () => {
   const rooms = useSelector((state) => state.lightsApp?.rooms);
@@ -13,14 +14,22 @@ export const Content: FC<{}> = () => {
     <Switch>
       <Route exact path="/">
         <div className={styles.wrapper}>
-          {groups &&
-            Object.keys(groups).map((id) => (
-              <LightsGroupWidget
-                key={`group-widget-${id}`}
-                id={id}
-                {...groups[id]}
-              />
-            ))}
+          <div className={styles.left}>
+            {groups &&
+              Object.keys(groups).map((id) => (
+                <LightsGroupWidget
+                  key={`group-widget-${id}`}
+                  id={id}
+                  {...groups[id]}
+                />
+              ))}
+          </div>
+          <div className={styles.right}>
+            <LightLevelWidget />
+            <LightLevelWidget />
+            <LightLevelWidget />
+            <LightLevelWidget />
+          </div>
         </div>
       </Route>
 

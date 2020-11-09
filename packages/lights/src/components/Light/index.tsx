@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { ILightState, ILight } from "../../types/light";
 import { GiExpand } from "react-icons/gi";
+import { BiCollapse } from "react-icons/bi";
 import { Light as LightIcon } from "@home/ui-light";
 import { Slider } from "@home/ui-slider";
 import { HuePicker, AlphaPicker } from "react-color";
@@ -72,12 +73,14 @@ export const Light: FC<ILight> = ({
       <div className={styles.slider}>
         <Slider value={state.bri} />
       </div>
-      <a
-        className={styles.expandButton}
-        onClick={() => setIsExpanded((state) => !state)}
-      >
-        <GiExpand />
-      </a>
+      {params.length > 1 && (
+        <a
+          className={styles.expandButton}
+          onClick={() => setIsExpanded((state) => !state)}
+        >
+          {isExpanded ? <BiCollapse /> : <GiExpand />}
+        </a>
+      )}
     </div>
   );
 };

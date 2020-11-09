@@ -6,6 +6,7 @@ import { Slider } from "@home/ui-slider";
 import { HuePicker, AlphaPicker } from "react-color";
 import { LightTemperatureSlider } from "@home/ui-light-temperature-slider";
 import { MdExpandMore, MdExpandLess } from "react-icons/md";
+import { BiCollapse } from "react-icons/bi";
 import { Light } from "../Light";
 import { IGroup } from "../../types/group";
 import { ILight } from "../../types/light";
@@ -97,9 +98,11 @@ export const LightsGroup: FC<ILightGroupProps> = ({
         <div className={styles.slider}>
           <Slider value={state.bri} />
         </div>
-        <a className={styles.expandButton} onClick={toggleDetails}>
-          <GiExpand />
-        </a>
+        {params.length > 1 && (
+          <a className={styles.expandButton} onClick={toggleDetails}>
+            {showDetails ? <BiCollapse /> : <GiExpand />}
+          </a>
+        )}
       </header>
       {isExpanded && lights.map((light) => <Light key={light.id} {...light} />)}
 
