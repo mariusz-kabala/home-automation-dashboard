@@ -33,6 +33,7 @@
     "date-fns": "^2.16.1",
     "dayjs": "^1.9.4",
     "react-color": "^2.19.3",
+    "react-gauge-chart": "^0.2.5",
     "react-icons": "^3.11.0",
     "react-slider": "^1.0.11",
     "recharts": "^1.8.5",

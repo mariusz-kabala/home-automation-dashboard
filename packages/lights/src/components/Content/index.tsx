@@ -25,10 +25,11 @@ export const Content: FC<{}> = () => {
               ))}
           </div>
           <div className={styles.right}>
-            <LightLevelWidget />
-            <LightLevelWidget />
-            <LightLevelWidget />
-            <LightLevelWidget />
+            <LightLevelWidget id={'LightLevelWidget-1'} />
+            <LightLevelWidget id={'LightLevelWidget-2'} />
+            <LightLevelWidget id={'LightLevelWidget-3'} />
+            <LightLevelWidget id={'LightLevelWidget-4'} />
+            <LightLevelWidget id={'LightLevelWidget-5'} />
           </div>
         </div>
       </Route>

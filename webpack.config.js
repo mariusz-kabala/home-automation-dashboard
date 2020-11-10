@@ -62,6 +62,15 @@ module.exports = function ({ deps, entry, port, name, filename, appName }) {
             },
           ],
         },
+        {
+          test: /\.css$/i,
+          use: [
+            isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
+            {
+              loader: "css-loader",
+            },
+          ],
+        },
       ],
     },
 

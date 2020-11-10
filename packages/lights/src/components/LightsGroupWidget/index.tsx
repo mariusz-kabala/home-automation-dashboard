@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 import { Light } from "@home/ui-light";
 import { Slider } from "@home/ui-slider";
-import { ILightState } from "../../state/reducer";
+import { ILightState } from "../../types/light";
 import { turnOnDeCONZGroup, turnOffDeCONZGroup } from "../../state/actions";
 import styles from "./styles.module.scss";
 

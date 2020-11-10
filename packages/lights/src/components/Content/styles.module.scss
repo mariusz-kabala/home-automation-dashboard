@@ -26,5 +26,7 @@
 .right {
   flex-basis: 40%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
